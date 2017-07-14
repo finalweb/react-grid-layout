@@ -1,5 +1,6 @@
 // @flow
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {DraggableCore} from 'react-draggable';
 import {Resizable} from 'react-resizable';
 import {perc, setTopLeft, setTransform} from './utils';
@@ -37,25 +38,25 @@ export default class GridItem extends React.Component {
     h: PropTypes.number.isRequired,
 
     // All optional
-    minW: function (props, propName, componentName) {
+    minW: function (props, propName) {
       const value = props[propName];
       if (typeof value !== 'number') return new Error('minWidth not Number');
       if (value > props.w || value > props.maxW) return new Error('minWidth larger than item width/maxWidth');
     },
 
-    maxW: function (props, propName, componentName) {
+    maxW: function (props, propName) {
       const value = props[propName];
       if (typeof value !== 'number') return new Error('maxWidth not Number');
       if (value < props.w || value < props.minW) return new Error('maxWidth smaller than item width/minWidth');
     },
 
-    minH: function (props, propName, componentName) {
+    minH: function (props, propName) {
       const value = props[propName];
       if (typeof value !== 'number') return new Error('minHeight not Number');
       if (value > props.h || value > props.maxH) return new Error('minHeight larger than item height/maxHeight');
     },
 
-    maxH: function (props, propName, componentName) {
+    maxH: function (props, propName) {
       const value = props[propName];
       if (typeof value !== 'number') return new Error('maxHeight not Number');
       if (value < props.h || value < props.minH) return new Error('maxHeight smaller than item height/minHeight');
@@ -305,8 +306,8 @@ export default class GridItem extends React.Component {
           // ToDo this wont work on nested parents
           const parentRect = node.offsetParent.getBoundingClientRect();
           const clientRect = node.getBoundingClientRect();
-          newPosition.left = (clientRect.left - parentRect.left) / scale;
-          newPosition.top = (clientRect.top - parentRect.top) / scale;
+          newPosition.left = (clientRect.left - parentRect.left + node.offsetParent.scrollLeft) / scale;
+          newPosition.top = (clientRect.top - parentRect.top + node.offsetParent.scrollTop) / scale;
           this.setState({dragging: newPosition});
           break;
         }
@@ -373,9 +374,9 @@ export default class GridItem extends React.Component {
     let newChild = React.cloneElement(child, {
       className: classNames('react-grid-item', child.props.className, this.props.className, {
         static: this.props.static,
-        resizing: this.state.resizing,
+        resizing: Boolean(this.state.resizing),
         'react-draggable': isDraggable,
-        'react-draggable-dragging': this.state.dragging,
+        'react-draggable-dragging': Boolean(this.state.dragging),
         cssTransforms: useCSSTransforms
       }),
       // We can set the width and height on the child, but unfortunately we can't set the position.

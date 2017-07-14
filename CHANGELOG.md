@@ -1,5 +1,59 @@
 # Changelog
 
+0.14.7 (Jul 14, 2017)
+----
+
+- Fixed a dragging bug when the grid container is scrollable. Thanks @chultquist.
+  - Ref: https://github.com/STRML/react-grid-layout/pull/555
+
+0.14.6 (Apr 19, 2017)
+----
+
+- Fixed a bad publish (connectivity issue).
+
+0.14.5 (Apr 19, 2017)
+----
+
+- Moved to `prop-types` package to avoid React.PropTypes deprecation in 15.5. Thanks @inverts!
+
+0.14.4 (Mar 9, 2017)
+----
+
+#### Fixes:
+
+- Typecheck in `WidthProvider` to satisfy Flow (and technically, this could be a Text node)
+
+##### Dev:
+
+- Update Flow
+
+0.14.3 (Feb 22, 2017)
+----
+
+#### Fixes:
+
+- Reverted #499; `msTransform` is indeed correct. See [discussion](https://github.com/STRML/react-grid-layout/pull/499#issuecomment-281703069).
+
+0.14.2 (Feb 22, 2017)
+----
+
+#### Fixes:
+
+- Fixed use of `MSTranform` for IE. Thanks @dvoaviarison (#499)
+- Fix generation of source maps, which was temporarily broken by the webpack 2 upgrade.
+
+#### Internal:
+
+- Update development dependencies and babel version.
+
+0.14.1 (Feb 20, 2017)
+----
+
+#### Fixes:
+
+- Fixed a minor Flow type issue when a `classnames` typedef is present.
+- Fixed a scoping issue when running `make build-example`.
+
 0.14.0 (Feb 13, 2017)
 -----
 

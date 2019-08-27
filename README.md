@@ -16,7 +16,7 @@ RGL is React-only and does not require jQuery.
 ![BitMEX UI](http://i.imgur.com/oo1NT6c.gif)
 > GIF from production usage on [BitMEX.com](https://www.bitmex.com)
 
-[**[Demo](https://strml.github.io/react-grid-layout/examples/0-showcase.html) | [Changelog](/CHANGELOG.md) | [WebpackBin Editable demo](https://www.webpackbin.com/bins/-Kvr2qCxorvGMgVMxkmI)**]
+[**[Demo](https://strml.github.io/react-grid-layout/examples/0-showcase.html) | [Changelog](/CHANGELOG.md) | [CodeSandbox Editable demo](https://codesandbox.io/s/5wy3rz5z1x?module=%2Fsrc%2FShowcaseLayout.js)**]
 
 ## Table of Contents
 
@@ -46,6 +46,9 @@ RGL is React-only and does not require jQuery.
 1. [Minimum and Maximum Width/Height](https://strml.github.io/react-grid-layout/examples/9-min-max-wh.html)
 1. [Dynamic Minimum and Maximum Width/Height](https://strml.github.io/react-grid-layout/examples/10-dynamic-min-max-wh.html)
 1. [No Vertical Compacting (Free Movement)](https://strml.github.io/react-grid-layout/examples/11-no-vertical-compact.html)
+1. [Prevent Collision](https://strml.github.io/react-grid-layout/examples/12-prevent-collision.html)
+1. [Error Case](https://strml.github.io/react-grid-layout/examples/13-error-case.html)
+1. [Toolbox](https://strml.github.io/react-grid-layout/examples/14-toolbox.html)
 
 #### Projects Using React-Grid-Layout
 
@@ -59,6 +62,7 @@ RGL is React-only and does not require jQuery.
 - [Reflect](https://reflect.io)
 - [ez-Dashing](https://github.com/ylacaute/ez-Dashing)
 - [Kibana](https://www.elastic.co/products/kibana)
+- [Graphext](https://graphext.com/)
 
 *Know of others? Create a PR to let me know!*
 
@@ -403,7 +407,7 @@ will be draggable.
 
 If you have a feature request, please add it as an issue or make a pull request.
 
-If you have a bug to report, please reproduce the bug in [WebpackBin](http://www.webpackbin.com/VymTE3zWG) to help
+If you have a bug to report, please reproduce the bug in [CodeSandbox](https://codesandbox.io/s/5wy3rz5z1x?module=%2Fsrc%2FShowcaseLayout.js) to help
 us easily isolate it.
 
 ## TODO List

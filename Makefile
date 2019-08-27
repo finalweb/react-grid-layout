@@ -12,7 +12,7 @@ MIN_MAP = $(DIST)/react-grid-layout.min.js.map
 .PHONY: test dev lint build clean install link
 
 
-build: clean build-js copy-flow $(MIN)
+build: clean build-js $(MIN)
 
 clean:
 	rm -rf $(BUILD) $(DIST)
@@ -36,17 +36,9 @@ build-example:
 	@$(BIN)/webpack --config webpack-examples.config.js
 	node ./examples/generate.js
 
-# Copy original source as `.js.flow` for use with flow
-copy-flow:
-	# Create tmpdir & copy
-	$(eval TMP := $(shell mktemp -d))
-	cp -R $(LIB)/ $(TMP)
-	# Rename extensions
-	find $(TMP) -type f -name '*.js*' -exec sh -c 'mv -f "$$0" "$${0%.*}.js.flow"' {} \;
-	# Copy into build
-	cp -R $(TMP)/ $(BUILD)
-	# Remove tmpdir
-	rm -rf $(TMP)
+view-example: build-example
+	@$(BIN)/opener examples/0-showcase.html
+
 
 # FIXME flow is usually global
 lint:
@@ -57,13 +49,13 @@ lint:
 test:
 	@$(BIN)/jest
 
-release-patch: build
+release-patch: build lint test
 	@$(call release,patch)
 
-release-minor: build
+release-minor: build lint test
 	@$(call release,minor)
 
-release-major: build
+release-major: build lint test
 	@$(call release,major)
 
 publish:
